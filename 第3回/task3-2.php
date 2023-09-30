@@ -5,6 +5,7 @@
         <title>ぺージタイトル</title>
     </head>
     <body>
+        <!-- テーブルの記述 -->
         <table border=1>
             <?php
                 $limit = 9;
@@ -12,10 +13,15 @@
                 {
                     for($j = 0; $j <= $limit; $j++)
                     {
-                        if(($i==0)&&($j==0))
+                        // ヘッダーの記述
+                        echo "<th>"
+                        if($i==0)
                         {
-                            echo "<th>x</th>";
+                            echo "<li>x</li>";
                         }
+                        echo "</th>"
+
+                        // 中身の記述
                     }
                 }
             ?>
