@@ -15,3 +15,4 @@
         ?>
     </body>
 </html>
+<!-- http://127.0.0.1:10800/~sspuser/test.php?n=3&name=Yamada -->
