@@ -1,0 +1,22 @@
+$aには「<p>red</p>」が入っている。
+$bには「Can\'t'」が入っている。
+$cには「it is $a」が入っている。
+$dには「it is <p>red</p>」が入っている。
+$eには「it is $a」が入っている。
+$fには「it is <p>red</p>」が入っている。
+$gには「<p>red</p>Can't」が入っている。
+$hには「$a.$b」が入っている。
+$iには「<p>red</p>.Can't」が入っている。
+$jには「\」が入っている。
+$kには「a="hogehoge"」が入っている。
+$lには「hogehoge='<p>red</p>';」が入っている。
+$mには「hogehoge="$a";」が入っている。
+$nには「hogehoge=;」が入っている。
+$oには「".."」が入っている。
+$pには「hogehoge='.';」が入っている。
+$qには「hogehoge='.';」が入っている。
+$rには「
+<p> hogehoge </p>
+<p>red</p>
+<p> hogehoge</p>
+」が入っている。
