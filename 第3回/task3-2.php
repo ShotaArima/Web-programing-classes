@@ -3,6 +3,12 @@
     <head>
         <meta charset = "UTF-8" />
         <title>ぺージタイトル</title>
+        <style>
+            th
+            {
+                background-color: gray;
+            }
+        </style>
     </head>
     <body>
         <!-- テーブルの記述 -->
@@ -11,18 +17,33 @@
                 $limit = 9;
                 for($i = 0; $i <= $limit; $i++)
                 {
-                    for($j = 0; $j <= $limit; $j++)
+                    echo "<tr>";
+                    echo "<th>";
+                    if($i==0)
+                    {
+                        echo "x";
+                    }
+                    else
+                    {
+                        echo "$i";
+                    }
+                    echo "</th>";
+
+                    for($j = 1; $j <= $limit; $j++)
                     {
                         // ヘッダーの記述
-                        echo "<th>"
                         if($i==0)
                         {
-                            echo "<li>x</li>";
+                            echo "<th>$j</th>";
                         }
-                        echo "</th>"
-
-                        // 中身の記述
+                        else
+                        {
+                            // 中身の記述
+                            $result=$i*$j;
+                            echo "<td>$result</td>";
+                        }
                     }
+                echo "</tr>";
                 }
             ?>
         </table>
