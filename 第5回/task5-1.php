@@ -6,10 +6,11 @@
     </head>
     <body>
         <?php
-            $id['poti']=201;
-            $id['tama']=205;
+            $price['apple']=150;
+            $price['orange']=120;
+            $price['pinapple']=300;
 
-            foreach($id as $a => $b)
+            foreach($price as $a => $b)
             {
                 echo "$a : $b<br>";
             }
