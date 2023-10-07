@@ -23,7 +23,7 @@
             {
                 foreach($fruit[$i] as $j => $b)
                 {
-                    echo "$j の個数が <span id='fruit$i-$j'>$b</span><br>";
+                    echo "$j :$b<br>";
                 }
                 echo "<br>";
             }
