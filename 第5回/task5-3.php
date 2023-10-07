@@ -23,25 +23,70 @@
             {
                 foreach($fruit[$i] as $j => $b)
                 {
-                    echo "$j の個数が $b<br>";
+                    echo "$j の個数が <span id='fruit$i-$j'>$b</span><br>";
                 }
                 echo "<br>";
             }
         ?>
 
         <div>
-            <button id="apple" type="button" class="btn btn-danger" onclick="additem()">リンゴ追加</button>
-            <button id="orange" type="button" class="btn btn-warning">オレンジ追加</button>
-            <button id="pinapple" type="button" class="btn btn-success">パイナップル追加</button>
+            <button id="apple" type="button" class="btn btn-danger" onclick="additem(0)">リンゴ追加</button>
+            <button id="orange" type="button" class="btn btn-warning" onclick="additem(1)">バナナ追加</button>
+            <button id="pinapple" type="button" class="btn btn-success" onclick="additem(2)">パイナップル追加</button>
         </div>
+        <script>
+            function additem(fruitID)
+            {
+                if(fruitID==0)
+                {
+                    // 変更前
+                    var fruitNum = <?php echo $fruit[0]['num']; ?>;
+                    console.log("リンゴの個数 変更前: " + fruitNum);
+
+                    <?php
+                        $fruit[0]['num']++;
+                    ?>
+
+                    // 変更後
+                    alert("<?php echo $fruit[0]['name']; ?>が追加されました。");
+                    var fruitNum = <?php echo $fruit[0]['num']; ?>;
+                    console.log("リンゴの個数 変更後: " + fruitNum);
+                }
+                else if(fruitID==1)
+                {
+                    // 変更前
+                    var fruitNum = <?php echo $fruit[1]['num']; ?>;
+                    console.log("バナナの個数 変更前: " + fruitNum);
+
+                    <?php
+                        $fruit[1]['num']++;
+                    ?>
+
+                    // 変更後
+                    alert("<?php echo $fruit[1]['name']; ?>が追加されました。");
+                    var fruitNum = <?php echo $fruit[1]['num']; ?>;
+                    console.log("バナナの個数 変更後: " + fruitNum);
+                }
+                else if(fruitID==2)
+                {
+                    // 変更前
+                    var fruitNum = <?php echo $fruit[2]['num']; ?>;
+                    console.log("パイナップルの個数 変更前: " + fruitNum);
+
+                    <?php
+                        $fruit[2]['num']++;
+                    ?>
+
+                    // 変更後
+                    alert("<?php echo $fruit[2]['name']; ?>が追加されました。");
+                    var fruitNum = <?php echo $fruit[2]['num']; ?>;
+                    console.log("パイナップルの個数 変更後: " + fruitNum);
+                }
+                else
+                {
+                    alert("無効な値です。");
+                }
+            }
+        </script>
     </body>
 </html>
-
-<script>
-    function additem()
-    {
-        <?php
-            // if document.getElementById("apple") = ;
-        ?>
-    }
-</script>
