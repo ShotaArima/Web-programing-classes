@@ -3,6 +3,12 @@
     <head>
         <meta charset="UTF-8" />
         <title>ぺージタイトル</title>
+        <style>
+            th
+            {
+                background-color: gray;
+            }
+        </style>
     </head>
     <body>
         <?php
@@ -22,13 +28,8 @@
             $a[2]['humidity']=70;
 
             // 表形式表示
-            echo "<table>";
-            echo "<th>
-                    <td>date</td>
-                    <td>temperature</td>
-                    <td>pressure</td>
-                    <td>humidity/td>
-                </th>";
+            echo "<table border=1>";
+            echo "<th>date</th><th>temperature</th><th>pressure</th><th>humidity</th>";
             for($i=0; $i<count($a); $i++)
             {
                 echo "<tr>";
