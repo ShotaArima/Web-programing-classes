@@ -8,85 +8,76 @@
     <body>
         <?php
             $fruit[0]['name']='リンゴ';
-            $fruit[0]['num']=0;
+            $fruit[0]['num']=$_GET['num_apple'];
             $fruit[0]['price']=100;
 
             $fruit[1]['name']='バナナ';
-            $fruit[1]['num']=0;
+            $fruit[1]['num']=$_GET['num_banana'];
             $fruit[1]['price']=80;
 
             $fruit[2]['name']='パイナップル';
-            $fruit[2]['num']=0;
+            $fruit[2]['num']=$_GET['num_pinapple'];
             $fruit[2]['price']=120;
 
             for($i=0; $i<count($fruit); $i++)
             {
                 foreach($fruit[$i] as $j => $b)
                 {
-                    echo "$j :$b<br>";
+                    if($b<0)
+                    {
+                        echo "<a style='color: red;'>$j :$b</a><br>";
+                    }
+                    else
+                    {
+                        echo "$j :$b<br>";
+                    }
                 }
                 echo "<br>";
             }
         ?>
 
+        <!-- 追加のボタン -->
         <div>
-            <button id="apple" type="button" class="btn btn-danger" onclick="additem(0)">リンゴ追加</button>
-            <button id="orange" type="button" class="btn btn-warning" onclick="additem(1)">バナナ追加</button>
-            <button id="pinapple" type="button" class="btn btn-success" onclick="additem(2)">パイナップル追加</button>
+            <a id="addapple" class="btn btn-danger" style="border: 5px solid #dc3545;" href="http://127.0.0.1:10800/~sspuser/task5-3.php?num_apple=<?php echo ($fruit[0]['num'] + 1); ?>&num_banana=<?php echo $fruit[1]['num']; ?>&num_pinapple=<?php echo $fruit[2]['num']; ?>">リンゴ追加</a>
+            <a id="addbanana" class="btn btn-warning" style="border: 5px solid #ffc107;" href="http://127.0.0.1:10800/~sspuser/task5-3.php?num_apple=<?php echo $fruit[0]['num']; ?>&num_banana=<?php echo ($fruit[1]['num'] + 1); ?>&num_pinapple=<?php echo $fruit[2]['num']; ?>">バナナ追加</a>
+            <a id="addpineapple" class="btn btn-success" style="border: 5px solid #198754;" href="http://127.0.0.1:10800/~sspuser/task5-3.php?num_apple=<?php echo $fruit[0]['num']; ?>&num_banana=<?php echo $fruit[1]['num']; ?>&num_pinapple=<?php echo ($fruit[2]['num'] + 1); ?>">パイナップル追加</a>
         </div>
-        <script>
-            function additem(fruitID)
-            {
-                if(fruitID==0)
+
+        <!-- 削除のボタン -->
+        <div>
+            <?php
+                if ($fruit[0]['num'] > 0)
                 {
-                    // 変更前
-                    var fruitNum = <?php echo $fruit[0]['num']; ?>;
-                    console.log("リンゴの個数 変更前: " + fruitNum);
-
-                    <?php
-                        $fruit[0]['num']++;
-                    ?>
-
-                    // 変更後
-                    alert("<?php echo $fruit[0]['name']; ?>が追加されました。");
-                    var fruitNum = <?php echo $fruit[0]['num']; ?>;
-                    console.log("リンゴの個数 変更後: " + fruitNum);
-                }
-                else if(fruitID==1)
-                {
-                    // 変更前
-                    var fruitNum = <?php echo $fruit[1]['num']; ?>;
-                    console.log("バナナの個数 変更前: " + fruitNum);
-
-                    <?php
-                        $fruit[1]['num']++;
-                    ?>
-
-                    // 変更後
-                    alert("<?php echo $fruit[1]['name']; ?>が追加されました。");
-                    var fruitNum = <?php echo $fruit[1]['num']; ?>;
-                    console.log("バナナの個数 変更後: " + fruitNum);
-                }
-                else if(fruitID==2)
-                {
-                    // 変更前
-                    var fruitNum = <?php echo $fruit[2]['num']; ?>;
-                    console.log("パイナップルの個数 変更前: " + fruitNum);
-
-                    <?php
-                        $fruit[2]['num']++;
-                    ?>
-
-                    // 変更後
-                    alert("<?php echo $fruit[2]['name']; ?>が追加されました。");
-                    var fruitNum = <?php echo $fruit[2]['num']; ?>;
-                    console.log("パイナップルの個数 変更後: " + fruitNum);
+                    echo '<a id="delapple" class="btn btn-danger" style="background-color: white; border: 5px solid #dc3545; color: black;" href="http://127.0.0.1:10800/~sspuser/task5-3.php?num_apple=' . ($fruit[0]['num'] - 1) . '&num_banana=' . $fruit[1]['num'] . '&num_pinapple=' . $fruit[2]['num'] . '">リンゴ削除</a>';
                 }
                 else
                 {
-                    alert("無効な値です");
+                    $fruit[0]['num']=0;
+                    echo '<a id="delapple" class="btn btn-danger" style="background-color: white; border: 5px solid #dc3545; color: black;" href="http://127.0.0.1:10800/~sspuser/task5-3.php?num_apple=' . $fruit[0]['num'] . '&num_banana=' . $fruit[1]['num'] . '&num_pinapple=' . $fruit[2]['num'] . '">リンゴ削除</a>';
                 }
-            }
-        </script>
+
+                if ($fruit[1]['num'] > 0)
+                {
+                    echo '<a id="delbanana" class="btn btn-warning" style="background-color: white; border: 5px solid #ffc107; color: black;" href="http://127.0.0.1:10800/~sspuser/task5-3.php?num_apple=' .$fruit[0]['num'] . '&num_banana=' . ($fruit[1]['num'] - 1) .'&num_pinapple=' . $fruit[2]['num'].'">バナナ削除</a>';
+                }
+                else
+                {
+                    $fruit[1]['num']=0;
+                    echo '<a id="delbanana" class="btn btn-warning" style="background-color: white; border: 5px solid #ffc107; color: black;" href="http://127.0.0.1:10800/~sspuser/task5-3.php?num_apple=' .$fruit[0]['num'] . '&num_banana=' . $fruit[1]['num'] .'&num_pinapple=' . $fruit[2]['num'].'">バナナ削除</a>';
+                }
+                if ($fruit[2]['num'] > 0)
+                {
+                    echo '<a id="delpineapple" class="btn btn-success" style="background-color: white; border: 5px solid #198754; color: black;" href="http://127.0.0.1:10800/~sspuser/task5-3.php?num_apple=' . $fruit[0]['num'] . '&num_banana=' . $fruit[1]['num'] . '&num_pinapple=' . ($fruit[2]['num'] - 1) . '">パイナップル削除</a>';
+                }
+                else
+                {
+                    $fruit[2]['num']=0;
+                    echo '<a id="delpineapple" class="btn btn-success" style="background-color: white; border: 5px solid #198754; color: black;" href="http://127.0.0.1:10800/~sspuser/task5-3.php?num_apple=' . $fruit[0]['num'] . '&num_banana=' . $fruit[1]['num'] . '&num_pinapple=' . $fruit[2]['num'] . '">パイナップル削除</a>';
+                }
+            ?>
+        </div>
     </body>
 </html>
+
+<!-- 初期状態 -->
+<!-- http://127.0.0.1:10800/~sspuser/task5-3.php?num_apple=0&num_banana=0&num_pinapple=0 -->
