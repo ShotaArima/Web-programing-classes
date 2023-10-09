@@ -22,17 +22,24 @@
             $a[2]['humidity']=70;
 
             // 表形式表示
-            <table>
+            echo "<table>";
+            echo "<th>
+                    <td>date</td>
+                    <td>temperature</td>
+                    <td>pressure</td>
+                    <td>humidity/td>
+                </th>";
             for($i=0; $i<count($a); $i++)
             {
                 echo "<tr>";
                 foreach($a[$i] as $j => $b)
                 {
-                    echo "<td>$j : $b</td>";
+                    echo "<td>$b</td>";
+                    // echo "<td>$j : $b</td>";
                 }
                 echo "</tr>";
             }
-            <table>
+            echo "</table>";
         ?>
     </body>
 </html>
