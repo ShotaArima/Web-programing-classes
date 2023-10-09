@@ -76,6 +76,11 @@
                 }
             ?>
         </div>
+        <?php
+            $total=$fruit[0]['num']*$fruit[0]['price']+$fruit[1]['num']*$fruit[1]['price']+$fruit[2]['num']*$fruit[2]['price'];
+        ?>
+        <p>合計金額は<?php echo "$total"; ?>
+        </p>
     </body>
 </html>
 
