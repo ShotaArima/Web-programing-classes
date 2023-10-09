@@ -21,15 +21,18 @@
             $a[2]['pressure']=950;
             $a[2]['humidity']=70;
 
-            // echo "<pre>". htmlspecialchars(print_r($a,true)) ."</pre>";
+            // 表形式表示
+            <table>
             for($i=0; $i<count($a); $i++)
             {
+                echo "<tr>";
                 foreach($a[$i] as $j => $b)
                 {
-                    echo "$j : $b<br>";
+                    echo "<td>$j : $b</td>";
                 }
-                echo "<br>";
+                echo "</tr>";
             }
+            <table>
         ?>
     </body>
 </html>
