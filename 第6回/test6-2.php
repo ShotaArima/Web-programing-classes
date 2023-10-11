@@ -5,13 +5,14 @@
         <title>ぺージタイトル</title>
     </head>
     <body>
-        <h1>フォームのサンプル</h1>
-        <form method="get" action="recv.php">
-            入力1<input type="text" name="Txt1" value="">
-            <br>
-            入力2<textarea name="Txt2" rows="5" cols="30"></textarea>
-            <br>
-            <button type="submit" name="Btn1" value="Btn1">ボタン1</button>
-        </form>
+        <?php
+            $a=$_GET['Txt1'];
+            $b=$_GET['Txt2'];
+            echo '入力1の内容は'.htmlspecialchars($a). '<br>';
+            echo '入力2の内容は:<br><pre>'.htmlspecialchars($b). '</pre><br>';
+        ?>
     </body>
 </html>
+
+<!-- リンク -->
+<!-- http://127.0.0.1:10800/~sspuser/test6-2.php?Text1=〇〇&Text2=〇〇 -->
