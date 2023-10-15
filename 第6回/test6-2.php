@@ -6,8 +6,8 @@
     </head>
     <body>
         <?php
-            $a=$_GET['Txt1'];
-            $b=$_GET['Txt2'];
+            $a=$_POST['Txt1'];
+            $b=$_POST['Txt2'];
             echo '入力1の内容は'.htmlspecialchars($a). '<br>';
             echo '入力2の内容は:<br><pre>'.htmlspecialchars($b). '</pre><br>';
         ?>
