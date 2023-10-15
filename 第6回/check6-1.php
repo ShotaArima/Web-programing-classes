@@ -10,13 +10,22 @@
         <form method="POST" action="main6-1.php">
             <h1>投稿</h1>
             <?php
-                // 最後に投稿された内容を表示
-                $postKeys = array_keys($_POST['text']);
-                $lastPostIndex = end($postKeys);
-                $lastPostContent = $_POST['post'][$lastPostIndex];
+                // 確認表示
+                echo '<p>'.htmlspecialchars($_POST['text']).'</p>';
+                // 配列に格納
+                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['text']))
+                {
+                    $_POST['post'][] = htmlspecialchars($_POST['text']);
+                }
 
-                echo '<p> ' . htmlspecialchars($lastPostContent) . '</p>';//正直ここを最後表示
-                echo '[' . htmlspecialchars($lastPostIndex) . ']=' . '"' . htmlspecialchars($lastPostContent) . '"</p>';
+                // 投稿内容をhiddenフィールドとして設定
+                if (isset($_POST['post']) && is_array($_POST['post']))
+                {
+                    foreach ($_POST['post'] as $index => $value)
+                    {
+                        echo '<input type="hidden" name="post[' . $index . ']" value="' . htmlspecialchars($value) . '">';
+                    }
+                }
             ?>
             <button type="submit" class="btn btn-success" name="btn-post" value="btn-create">投稿</button>
         </form>
@@ -24,10 +33,13 @@
         <form method="POST" action="create6-1.php">
             <h1>修正</h1>
             <?php
-                // 修正ボタンが押された場合にその添え字を渡す
-                echo '<input type="hidden" name="post_index_to_edit" value="' . htmlspecialchars($lastPostIndex) . '">';
+                // 修正ボタンが押された場合に本文内容を指し戻す
+                if (isset($_POST['text']))
+                {
+                    echo '<input type="hidden" name="text" value="' . htmlspecialchars($_POST['text']) . '">';
+                }
             ?>
-            <button type="submit" class="btn btn-warning" name="post[]" value="btn-fix">修正</button>
+            <button type="submit" class="btn btn-warning" name="btn-fix" value="btn-fix">修正</button>
         </form>
 
         <form method="POST" action="main6-1.php">

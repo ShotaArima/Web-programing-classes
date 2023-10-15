@@ -11,13 +11,13 @@
             <button type="submit" class="btn btn-primary" name="btn-create">新規作成</button>
         </form>
         <?php
-            echo '<h3>記事の内容</h3>';
-            if (isset($_POST['post']))
+            if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['post']) && is_array($_POST['post']))
             {
-                foreach($_POST['post'] as $key => $value)
+                echo '<h3>投稿内容</h3>';
+                foreach ($_POST['post'] as $key => $value)
                 {
-                    echo '<p> ' . htmlspecialchars($value) . '</p>';
-                    echo '[' . htmlspecialchars($key) . ']=' . '"' . htmlspecialchars($value) . '"</p>';
+                    // echo '<p>[' . $key . '] ' . htmlspecialchars($value) . '</p>';
+                    echo '<p>' . htmlspecialchars($value) . '</p>';
                 }
             } else
             {
