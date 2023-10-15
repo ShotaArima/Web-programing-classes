@@ -26,10 +26,10 @@
                     echo '<input type="hidden" name="postJson" value="' . htmlspecialchars($postJson) . '">';
                 }
 
-                // // 配列postの中身を表示
-                // echo '<pre>';
-                // print_r($_POST['post']);
-                // echo '</pre>';
+                // 配列postの中身を表示
+                echo '<pre>';
+                print_r($_POST['post']);
+                echo '</pre>';
             ?>
 
             <!-- <input type="hidden" name="post" value="<?= htmlspecialchars(json_encode($_POST['post'])) ?>"> -->

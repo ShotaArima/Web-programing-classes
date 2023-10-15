@@ -17,7 +17,6 @@
                 echo '<h3>投稿内容</h3>';
                 foreach ($_POST['post'] as $key => $value)
                 {
-                    // echo '<p>[' . $key . '] ' . htmlspecialchars($value) . '</p>';
                     echo '<p>' . htmlspecialchars($value) . '</p>';
                 }
             } else

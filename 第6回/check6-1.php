@@ -13,13 +13,10 @@
                 // 確認表示
                 echo '<p>'.htmlspecialchars($_POST['text']).'</p>';
 
-                // if(isset($_POST['post']) && is_array($_POST['post'])){
-                //     echo "Received data from post array: <pre>";
-                //     print_r($_POST['post']);
-                //     echo "</pre>";
-                // } else {
-                //     echo "No data received from post array.";
-                // }
+                // 配列postの中身を表示
+                echo '<pre>';
+                print_r($_POST['post']);
+                echo '</pre>';
 
                 // 配列に格納
                 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['text']))
@@ -27,10 +24,10 @@
                     $_POST['post'][] = htmlspecialchars($_POST['text']);
                 }
 
-                // // 配列postの中身を表示
-                // echo '<pre>';
-                // print_r($_POST['post']);
-                // echo '</pre>';
+                // 配列postの中身を表示
+                echo '<pre>';
+                print_r($_POST['post']);
+                echo '</pre>';
 
                 // 投稿内容をhiddenフィールドとして設定
                 if (isset($_POST['post']) && is_array($_POST['post']))
