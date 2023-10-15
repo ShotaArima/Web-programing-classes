@@ -8,6 +8,7 @@
     <body>
         <h1>なんちゃって掲示板</h1>
         <form method="post" action="create6-1.php">
+            <input type="hidden" name="post" value="<?= htmlspecialchars(json_encode($_POST['post'])) ?>">
             <button type="submit" class="btn btn-primary" name="btn-create">新規作成</button>
         </form>
         <?php
