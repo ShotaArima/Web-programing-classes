@@ -29,19 +29,6 @@
                 exit("Use error on table ($dbname)!");
             }
 
-            // レコードの作成
-            // ポストで受け取ったデータを変数に入れ替え、レコードに追加する
-
-            $insertQuery="INSERT INTO `$tablename` (transaction_date, pretext, income, expense, balance) VALUES ('2023-01-01', 'otoshidama', 1000, 0, 1000),('2023-01-02', 'kaimono', 0, 200, 800)";
-
-
-            // レコードの追加
-            $result = mysqli_query($link,$insertQuery);
-            if (!$result)
-            {
-                exit("Insert error on table ($tablename)!");
-            }
-
             // レコードの取得
             $selectQuery = "SELECT * FROM `$tablename`";
             $result = mysqli_query($link, $selectQuery);
@@ -49,14 +36,22 @@
             if ($result) {
                 // 結果を表示
                 echo "<hr>";
-                echo "<table border="1'>";
+                echo "<table border='1'>";
+                echo "<th>";
+                echo "<td>date</td>
+                    <td>項目</td>
+                    <td>収入</td>
+                    <td>支出</td>
+                    <td>残高</td>";
+                echo "</th>";
                 while ($row = mysqli_fetch_assoc($result))
                 {
+                    echo "<tr>";
                     foreach ($row as $key => $value)
                     {
-                        echo "<td>"htmlspecialchars($key) . " : " . htmlspecialchars($value) . "</td><br>";
+                        echo "<td>" . htmlspecialchars($value) . "</td>";
                     }
-                    echo "<hr>";
+                    echo "</tr>";
                 }
                 echo "</table>";
             } else
@@ -64,7 +59,6 @@
                 echo "Error fetching records: " . mysqli_error($link);
             }
 
-            echo "<hr>";
             mysqli_free_result($result);
 
             // データベースを切断
