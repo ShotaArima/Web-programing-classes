@@ -36,7 +36,7 @@
             <button type="submit" class="btn btn-success" name="btn-confirm" value="btn-create">確認</button>
         </form>
 
-        <form method="POST" action="main6-1.php">
+        <form method="POST" action="main9-1.php">
             <h1>作成取消</h1>
             <button type="button" class="btn btn-danger" name="btn-cancel" value="btn-create">戻る</button>
         </form>

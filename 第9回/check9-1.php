@@ -7,7 +7,7 @@
     </head>
     <body>
         <h1>確認画面</h1>
-        <form method="POST" action="main6-1.php">
+        <form method="POST" action="main9-1.php">
             <h1>投稿</h1>
             <?php
                 // 確認表示
@@ -53,7 +53,7 @@
             <button type="submit" class="btn btn-warning" name="btn-fix" value="btn-fix">修正</button>
         </form>
 
-        <form method="POST" action="main6-1.php">
+        <form method="POST" action="main9-1.php">
             <h1>作成取消</h1>
             <button type="submit" class="btn btn-danger" name="btn-deleate" value="btn-delete">戻る</button>
         </form>
