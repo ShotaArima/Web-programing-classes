@@ -6,39 +6,34 @@
         <title>投稿記事入力画面</title>
     </head>
     <body>
-        <form method="POST" action="check9-1.php">
-            <h1>記事入力</h1>
+        <div class="container mt-5">
+            <form method="POST" action="check9-1.php">
+                <h1 class="mb-4">記事入力</h1>
 
-            <!-- Input field for text -->
-            <?php
-                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['text'])) {
-                    $textValue = htmlspecialchars($_POST['text']);
-                    echo '<input type="text" name="text" value="' . $textValue . '">';
-                } else {
-                    echo '<input type="text" name="text" value="">';
-                }
-            ?>
+                <!-- Input field for text -->
+                <?php
+                    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['context'])) {
+                        $nameValue = htmlspecialchars($_POST['name']);
+                        $textValue = htmlspecialchars($_POST['context']);
+                    } else {
+                        $nameValue = "";
+                        $textValue = "";
+                    }
+                ?>
+                <div class="form-group">
+                    <label for="name">名前</label>
+                    <input type="text" class="form-control" id="name" name="name" value="<?php echo $nameValue; ?>">
+                </div>
+                <div class="form-group">
+                    <label for="context">本文</label>
+                    <textarea class="form-control" id="context" name="context" rows="5"><?php echo $textValue; ?></textarea>
+                </div>
+                <button type="submit" class="btn btn-success" name="btn-confirm" value="btn-create">投稿確認</button>
+            </form>
 
-            <!-- Hidden fields for post array -->
-            <?php
-                if (isset($_POST['post']) && is_array($_POST['post'])) {
-                    $postJson = json_encode($_POST['post']);
-                    echo '<input type="hidden" name="postJson" value="' . htmlspecialchars($postJson) . '">';
-                }
-
-                // 配列postの中身を表示
-                echo '<pre>';
-                print_r($_POST['post']);
-                echo '</pre>';
-            ?>
-
-            <!-- <input type="hidden" name="post" value="<?= htmlspecialchars(json_encode($_POST['post'])) ?>"> -->
-            <button type="submit" class="btn btn-success" name="btn-confirm" value="btn-create">確認</button>
-        </form>
-
-        <form method="POST" action="main9-1.php">
-            <h1>作成取消</h1>
-            <button type="button" class="btn btn-danger" name="btn-cancel" value="btn-create">戻る</button>
-        </form>
+            <form method="POST" action="main9-1.php">
+                <button type="submit" class="btn btn-danger" name="btn-cancel" value="btn-stop">作成取消</button>
+            </form>
+        </div>
     </body>
 </html>
