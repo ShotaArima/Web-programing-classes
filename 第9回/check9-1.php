@@ -10,70 +10,13 @@
         <form method="POST" action="main9-1.php">
             <h1>投稿</h1>
             <?php
-
-                // $_POST['name']=$_POST['name'];
-                // $_POST['context']=$_POST['context'];
                 // 確認表示
                 echo '<hr>';
                 echo '<div>'.htmlspecialchars($_POST['name']).'さん';
                 echo '<p>'.htmlspecialchars($_POST['context']).'</p>';
                 echo '<hr>';
-
-                // if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['btn-post']))
-                // {
-                    // ボタンが押された時刻を取得
-                    $clickedTime = date("Y-m-d H:i:s");
-                    // SQLの名称定義
-                    $hostname='127.0.0.1';
-                    $username='root';
-                    $password='dbpass';
-                    $dbname='task9';
-                    $tablename='bbs';
-
-                    // mysql_report(MYSQLI_REPORT_OFF);
-
-                    // データベースへ接続
-                    $link=mysqli_connect($hostname,$username,$password);
-                    if(! $link)
-                    {
-                        exit("Connect erorr!");
-                    }
-
-                    // データべースの選択
-                    $result = mysqli_select_db($link,$dbname);
-                    if (!$result)
-                    {
-                        exit("Use error on table ($dbname)!");
-                    }
-
-                    // 検証とエスケープ
-                    $_POST['name'] = mysqli_real_escape_string($link, $_POST['name']);
-                    $_POST['context'] = mysqli_real_escape_string($link, $_POST['context']);
-
-                    // レコードの取得
-                    $selectQuery = "SELECT * FROM `$tablename`";
-                    $result = mysqli_query($link, $selectQuery);
-
-                    //時刻の生成
-                    if ($_SERVER["REQUEST_METHOD"] == "POST")
-                    {
-                        // この時刻をDATETIME型に変換
-                        $datetime = new DateTime($clickedTime);
-                        $formattedDatetime = $datetime->format("Y-m-d H:i:s");
-                        // $formattedDatetime を使用して何か処理を行うことができます
-                        // 例: データベースに挿入するなど
-                    }
-
-                    // レコードの作成
-                    $insertQuery = "INSERT INTO `$tablename` (d_when, name, context, good) VALUES ('$formattedDatetime', '{$_POST['name']}', '{$_POST['context']}', 0)";
-
-                    if (!empty($_POST['name']) && !empty($_POST['context']))
-                    {
-                        // レコードの追加
-                        $result = mysqli_query($link, $insertQuery);
-                    }
             ?>
-            <button type="submit" id="submit" class="btn btn-success" name="btn-post" value="btn-create">投稿</button>
+            <button type="submit" id="post" class="btn btn-success" name="btn-post" value="btn-create">投稿</button>
         </form>
 
         <form method="POST" action="create9-1.php">
@@ -98,3 +41,64 @@
         </form>
     </body>
 </html>
+<script>
+    // document.addEventListener("DOMContentLoaded", function()
+    // {
+        document.getElementById("post").addEventListener("click", function()
+        {
+            alert("ボタンがクリックされました");
+            <?php
+                // ボタンが押された時刻を取得
+                $clickedTime = date("Y-m-d H:i:s");
+                // SQLの名称定義
+                $hostname='127.0.0.1';
+                $username='root';
+                $password='dbpass';
+                $dbname='task9';
+                $tablename='bbs';
+
+                // mysql_report(MYSQLI_REPORT_OFF);
+
+                // データベースへ接続
+                $link=mysqli_connect($hostname,$username,$password);
+                if(! $link)
+                {
+                    exit("Connect erorr!");
+                }
+
+                // データべースの選択
+                $result = mysqli_select_db($link,$dbname);
+                if (!$result)
+                {
+                    exit("Use error on table ($dbname)!");
+                }
+
+                // 検証とエスケープ
+                $_POST['name'] = mysqli_real_escape_string($link, $_POST['name']);
+                $_POST['context'] = mysqli_real_escape_string($link, $_POST['context']);
+
+                // レコードの取得
+                $selectQuery = "SELECT * FROM `$tablename`";
+                $result = mysqli_query($link, $selectQuery);
+
+                //時刻の生成
+                if ($_SERVER["REQUEST_METHOD"] == "POST")
+                {
+                    // この時刻をDATETIME型に変換
+                    $datetime = new DateTime($clickedTime);
+                    $formattedDatetime = $datetime->format("Y-m-d H:i:s");
+                    // $formattedDatetime を使用して何か処理を行うことができます
+                    // 例: データベースに挿入するなど
+                }
+
+                // レコードの作成
+                $insertQuery = "INSERT INTO `$tablename` (d_when, name, context, good) VALUES ('$formattedDatetime', '{$_POST['name']}', '{$_POST['context']}', 0)";
+
+                if (!empty($_POST['name']) && !empty($_POST['context']))
+                {
+                    $result = mysqli_query($link, $insertQuery);
+                }
+            ?>
+        });
+    // });
+</script>
