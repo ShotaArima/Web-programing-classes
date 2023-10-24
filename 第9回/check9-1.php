@@ -67,9 +67,11 @@
                     // レコードの作成
                     $insertQuery = "INSERT INTO `$tablename` (d_when, name, context, good) VALUES ('$formattedDatetime', '{$_POST['name']}', '{$_POST['context']}', 0)";
 
-                    // レコードの追加
-                    $result = mysqli_query($link, $insertQuery);
-                // }
+                    if (!empty($_POST['name']) && !empty($_POST['context']))
+                    {
+                        // レコードの追加
+                        $result = mysqli_query($link, $insertQuery);
+                    }
             ?>
             <button type="submit" id="submit" class="btn btn-success" name="btn-post" value="btn-create">投稿</button>
         </form>
