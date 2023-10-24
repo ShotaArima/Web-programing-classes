@@ -20,8 +20,7 @@
                 echo '<hr>';
 
                 // if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['btn-post']))
-                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['btn-post']) && !empty($_POST['name']) && !empty($_POST['context']))
-                {
+                // {
                     // ボタンが押された時刻を取得
                     $clickedTime = date("Y-m-d H:i:s");
                     // SQLの名称定義
@@ -70,7 +69,7 @@
 
                     // レコードの追加
                     $result = mysqli_query($link, $insertQuery);
-                }
+                // }
             ?>
             <button type="submit" id="submit" class="btn btn-success" name="btn-post" value="btn-create">投稿</button>
         </form>
