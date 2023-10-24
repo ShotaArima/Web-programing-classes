@@ -35,21 +35,34 @@
                 justify-content: space-between; /* 両端に合わせる */
             }
 
-            /* .item {
-                /* 各アイテムのスタイル */
-                /* border: 1px solid #ccc;
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
                 padding: 10px;
-                margin: 5px;
-            } */
+                background-color: #333;
+                color: #fff;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 100;
+            }
+
+            body {
+                margin-top: 100px;
+            }
 
         </style>
         <title>メイン画面</title>
     </head>
     <body>
-        <h1>なんちゃって掲示板</h1>
-        <form method="post" action="create9-1.php">
-            <button type="submit" class="btn btn-primary" name="btn-create">新規作成</button>
-        </form>
+        <div class="header">
+            <h1>なんちゃって掲示板</h1>
+            <form method="post" action="create9-1.php">
+                <button type="submit" class="btn btn-primary" name="btn-create">新規作成</button>
+            </form>
+        </div>
         <?php
 
             // SQLの名称定義

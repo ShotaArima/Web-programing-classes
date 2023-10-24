@@ -4,8 +4,30 @@
         <meta charset="UTF-8"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <title>メイン画面</title>
+        <style>
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px;
+                background-color: #333;
+                color: #fff;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 100;
+            }
+
+            body {
+                margin-top: 80px;
+            }
+        </style>
     </head>
     <body>
+        <div class="header">
+            <h1 href="main9-1.php">なんちゃって掲示板</h1>
+        </div>
         <h1>確認画面</h1>
         <form method="POST" action="main9-1.php">
             <h1>投稿</h1>
