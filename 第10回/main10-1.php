@@ -54,13 +54,14 @@
             }
 
         </style>
-        <title>メイン画面</title>
+        <title>page_main</title>
     </head>
     <body>
         <div class="header">
             <h1>なんちゃって掲示板</h1>
-            <form method="post" action="create9-1.php">
-                <button type="submit" class="btn btn-primary" name="btn-create">新規作成</button>
+            <form method="post" action="create10-1.php">
+                <button type="submit" class="btn btn-primary" name="btn-create" value="btn-create">新規作成</button>
+                <input type="hidden" name="transition" value="trans_new"></input>
             </form>
         </div>
         <?php

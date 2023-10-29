@@ -26,10 +26,10 @@
     </head>
     <body>
         <div class="header">
-            <h1 href="main9-1.php">なんちゃって掲示板</h1>
+            <h1 href="main10-1.php">なんちゃって掲示板</h1>
         </div>
         <div class="container mt-5">
-            <form method="POST" action="check9-1.php">
+            <form method="POST" action="check10-1.php">
                 <h1 class="mb-4">記事入力</h1>
 
                 <!-- Input field for text -->
@@ -50,11 +50,13 @@
                     <label for="context">本文</label>
                     <textarea class="form-control" id="context" name="context" rows="5"><?php echo $textValue; ?></textarea>
                 </div>
-                <button type="submit" class="btn btn-success" name="btn-confirm" value="btn-create">投稿確認</button>
+                <button type="submit" class="btn btn-success" name="btn-confirm" value="btn-confirm">投稿確認</button>
+                <input type="hidden" name="transition" value="trans_confirm"></input>
             </form>
 
-            <form method="POST" action="main9-1.php">
+            <form method="POST" action="main10-1.php">
                 <button type="submit" class="btn btn-danger" name="btn-cancel" value="btn-stop">作成取消</button>
+                <input type="hidden" name="transition" value="trans_remove"></input>
             </form>
         </div>
     </body>

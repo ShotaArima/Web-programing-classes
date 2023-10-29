@@ -29,7 +29,7 @@
             <h1 href="main9-1.php">なんちゃって掲示板</h1>
         </div>
         <h1>確認画面</h1>
-        <form method="POST" action="main9-1.php">
+        <form method="POST" action="main10-1.php">
             <h1>投稿</h1>
             <?php
                 // 確認表示
@@ -39,9 +39,10 @@
                 echo '<hr>';
             ?>
             <button type="submit" id="post" class="btn btn-success" name="btn-post" value="btn-create">投稿</button>
+            <input type="hidden" name="transition" value="trans_submit"></input>
         </form>
 
-        <form method="POST" action="create9-1.php">
+        <form method="POST" action="create10-1.php">
             <h1>修正</h1>
             <?php
                 // 修正ボタンが押された場合に本文内容を指し戻す
@@ -55,9 +56,10 @@
                 }
             ?>
             <button type="submit" class="btn btn-warning" name="btn-fix" value="btn-fix">修正</button>
+            <input type="hidden" name="transition" value="trans_fix"></input>
         </form>
 
-        <form method="POST" action="main9-1.php">
+        <form method="POST" action="main10-1.php">
             <h1>作成取消</h1>
             <button type="submit" class="btn btn-danger" name="btn-cancel" value="btn-cancel">戻る</button>
         </form>
